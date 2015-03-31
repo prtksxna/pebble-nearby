@@ -15,11 +15,6 @@ var Cards = {
 	error: new UI.Card( {
 		title: 'Error',
 		subtitle: 'There was some problem'
-	} ),
-
-	loadingArcitle: new UI.Card( {
-		title: '',
-		subtitle: 'Loading'
 	} )
 };
 
@@ -65,13 +60,39 @@ var WP = {
 						);
 	},
 
+	showArticle: function ( title, distance, pageid ) {
+		// open a card
+		new UI.Card( {
+			title: title,
+			subtitle: 'Loading…'
+		} ).show();
+
+		// make ajax call
+		var url = 'http://en.wikipedia.org/w/api.php?format=json&action=query&pageids=' + pageid + '&prop=extracts&explaintext=true&exintro=true&exsentences=2';
+		ajax( { url: url, type: 'json' },
+							function ( json ) {
+								new UI.Card( {
+									title: title,
+									subtitle: distance,
+									body: json.query.pages[ pageid ].extract,
+									scrollable: true,
+									style: 'small'
+								} ).show();
+							},
+							function ( error ) {
+								Cards.error.show();
+							}
+		);
+	},
+
 	showPlaces: function ( places, currentLocation ) {
 		var items = [], placeMenu;
 		for( var i = 0; i < places.length; i ++) {
 			var place = places[ i ];
 			items.push( {
 				title: place.title,
-				subtitle: place.dist + ' km'
+				subtitle: place.dist + ' km',
+				pageid: place.pageid
 			} );
 		}
 		placeMenu = new UI.Menu( { 
@@ -93,6 +114,8 @@ var WP = {
 		placeMenu.on( 'select', function ( e ) { 
 			if ( e.itemIndex === 0 && e.sectionIndex === 0 ){
 				Location.getCurrentLocation();
+			} else {
+				WP.showArticle( e.item.title, e.item.subtitle, e.item.pageid );
 			}
 		} );
 
