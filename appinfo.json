@@ -1,0 +1,34 @@
+{
+  "uuid": "7c0cca96-3953-4033-b71f-b63c51dc951f",
+  "shortName": "Nearby",
+  "longName": "Wikipedia Nearby",
+  "companyName": "Path Seventeen",
+  "versionCode": 1,
+  "versionLabel": "1.0",
+  "watchapp": {
+    "watchface": false
+  },
+  "appKeys": {},
+  "resources": {
+    "media": [
+      {
+        "menuIcon": true,
+        "type": "png",
+        "name": "IMAGE_MENU_ICON",
+        "file": "images/menu_icon.png"
+      },
+      {
+        "type": "png",
+        "name": "IMAGE_TILE_SPLASH",
+        "file": "images/tile_splash.png"
+      },
+      {
+        "type": "font",
+        "name": "MONO_FONT_14",
+        "file": "fonts/UbuntuMono-Regular.ttf"
+      }
+    ]
+  },
+  "targetPlatforms": ["basalt" ],
+  "sdkVersion": "3"
+}
