@@ -50,7 +50,7 @@ var Location = {
 
 var WP = {
 	loadArticles: function ( lat, lon ) {
-		var url = 'http://en.wikipedia.org/w/api.php?action=query&list=geosearch&gsradius=10000&gscoord=' + lat + '|' + lon + '&format=json';
+		var url = 'https://en.wikipedia.org/w/api.php?action=query&list=geosearch&gsradius=10000&gscoord=' + lat + '|' + lon + '&format=json';
 		ajax( { url: url, type: 'json' },
 							function(json) {
 								WP.showPlaces( json.query.geosearch, { latitude: lat, longitude: lon } );
@@ -69,7 +69,7 @@ var WP = {
 		} ).show();
 
 		// make ajax call
-		var url = 'http://en.wikipedia.org/w/api.php?format=json&action=query&pageids=' + pageid + '&prop=extracts&explaintext=true&exintro=true&exsentences=2';
+		var url = 'https://en.wikipedia.org/w/api.php?format=json&action=query&pageids=' + pageid + '&prop=extracts&explaintext=true&exintro=true&exsentences=2';
 		ajax( { url: url, type: 'json' },
 							function ( json ) {
 								new UI.Card( {
