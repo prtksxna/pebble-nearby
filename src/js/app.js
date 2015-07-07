@@ -103,7 +103,7 @@ var WP = {
 					title: 'Get new places',
 					items: [ {
 						title: 'Refresh',
-						subtitle: 'Get you current location…'
+						subtitle: 'Get your current location…'
 					} ]
 				},
 				{
