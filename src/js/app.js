@@ -50,7 +50,7 @@ var Location = {
 
 var WP = {
 	loadArticles: function ( lat, lon ) {
-		var url = 'https://en.wikipedia.org/w/api.php?action=query&list=geosearch&gsradius=10000&gscoord=' + lat + '|' + lon + '&format=json';
+		var url = 'https://en.wikipedia.org/w/api.php?action=query&list=geosearch&gsradius=10000&gscoord=' + lat + '|' + lon + '&gslimit=10&format=json&formatversion=2';
 		ajax( { url: url, type: 'json' },
 							function(json) {
 								WP.showPlaces( json.query.geosearch, { latitude: lat, longitude: lon } );
